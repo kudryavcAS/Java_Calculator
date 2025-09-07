@@ -91,9 +91,18 @@ public class Calculator {
         x = in.nextDouble();
         System.out.println("Введите делитель:");
         y = in.nextDouble();
-        System.out.println("Частное:\n"+div(x,y));
+        try{
+            System.out.println("Частное:\n"+div(x,y));
+        }
+        catch (ArithmeticException ex){
+            System.out.println("Error: " + ex.getMessage());
+        }
     }
-    static double div(double x, double y){ return x/y; }
+    static double div(double x, double y){
+        if(y == 0){
+            throw  new ArithmeticException("Dividing into zero");
+        }
+        return x/y; }
 
     static void printFact(){
         int x;
